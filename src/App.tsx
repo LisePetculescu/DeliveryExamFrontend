@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Product from "./components/products/Product";
+import ProductPage from "./components/products/ProductPage";
 import "./App.css";
 import NavHeader from "./NavHeader";
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <NavHeader/>
         <Routes>
-          <Route path="/" element={<Product />} />
+          <Route path="/" element={<ProductPage />} />
         </Routes>
       
     </>
