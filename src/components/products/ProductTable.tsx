@@ -28,7 +28,8 @@ export default function ProductTable({ products }: { products: IProduct[] }) {
             <td>
               <button>SLET</button>
             </td>
-          </tr>        ))}
+          </tr>
+        ))}
       </tbody>
     </table>
   );
