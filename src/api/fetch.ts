@@ -29,6 +29,17 @@ export async function addProduct(newProduct: IProduct): Promise<IProduct> {
   return response.json();
 }
 
+// make a function that can delete a product and handle errors
+export async function deleteProduct(id: string): Promise<void> {
+  const response = await fetch(BASE_URL+`products/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete product");
+  }
+}
+
 
 
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { IProduct } from "../../interfaces";
-import { getProducts, getProduct } from "../../api/fetch";
+import { getProducts } from "../../api/fetch";
+// TODO: add so one product gets fetched --- getProduct;
 import ProductTable from "./ProductTable";
 import ProductForm from "./ProductForm";
 
@@ -19,7 +20,7 @@ export default function ProductPage() {
   // return list of products
   return (
     <>
-      <ProductTable products={products} productToUpdate={productToUpdate} setProductToUpdate={setProductToUpdate} />
+      <ProductTable products={products} setProductToUpdate={setProductToUpdate} setProducts={setProducts} />
 
       <ProductForm productToUpdate={productToUpdate} setProductToUpdate={setProductToUpdate} setProducts={setProducts} />
     </>
