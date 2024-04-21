@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { IProduct } from "../../interfaces";
-import { fetchProducts } from "../../api/fetch";
+import { getProducts, getProduct } from "../../api/fetch";
 import ProductTable from "./ProductTable";
 import ProductForm from "./ProductForm";
 
@@ -10,15 +10,16 @@ export default function ProductPage() {
 
 
   useEffect(() => {
-    fetchProducts()
-      .then((products) => setProducts(products))
-      .catch((error) => console.error(error));
+    getProducts()
+      .then((products: IProduct[]) => setProducts(products))
+      .catch((error: Error ) => console.error(error));
   }, []);
+
 
   // return list of products
   return (
     <>
-      <ProductTable products={products} />
+      <ProductTable products={products} productToUpdate={productToUpdate} setProductToUpdate={setProductToUpdate} />
 
       <ProductForm productToUpdate={productToUpdate} setProductToUpdate={setProductToUpdate} />
     </>
