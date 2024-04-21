@@ -2,7 +2,7 @@ import { IProduct } from "../../interfaces";
 
 
 
-export default function ProductTable({ products, productToUpdate, setProductToUpdate }: { products: IProduct[]; productToUpdate: IProduct | undefined; setProductToUpdate: (product: IProduct | undefined) => void }) {
+export default function ProductTable({ products,  productToUpdate, setProductToUpdate }: { products: IProduct[]; productToUpdate: IProduct | undefined; setProductToUpdate: (product: IProduct | undefined) => void }) {
 
   // make a function that return the object that is clicked on
  function handleEditClicked(product: IProduct) {

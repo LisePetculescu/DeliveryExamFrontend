@@ -21,7 +21,7 @@ export default function ProductPage() {
     <>
       <ProductTable products={products} productToUpdate={productToUpdate} setProductToUpdate={setProductToUpdate} />
 
-      <ProductForm productToUpdate={productToUpdate} setProductToUpdate={setProductToUpdate} />
+      <ProductForm productToUpdate={productToUpdate} setProductToUpdate={setProductToUpdate} setProducts={setProducts} />
     </>
   );
 }

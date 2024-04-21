@@ -14,14 +14,19 @@ export async function getProduct(id: string): Promise<IProduct> {
 export async function addProduct(newProduct: IProduct): Promise<IProduct> {
   const method = newProduct.id ? "PUT" : "POST";
   const url = BASE_URL + (newProduct.id ? `products/${newProduct.id}` : "products");
-  return await fetch(url, {
+  const response = await fetch(url, {
     method: method,
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newProduct),
-  }).then((response) => response.json());
+  });
 
+  if (!response.ok) {
+    throw new Error("Failed to add product");
+  }
+
+  return response.json();
 }
 
 

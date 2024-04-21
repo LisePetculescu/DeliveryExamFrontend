@@ -1,12 +1,17 @@
 import { IProduct } from "../../interfaces";
-import { addProduct } from "../../api/fetch";
+import { getProducts, addProduct } from "../../api/fetch";
 
-export default function ProductForm({ productToUpdate, setProductToUpdate }: 
-  { productToUpdate: IProduct | undefined; setProductToUpdate: (product: IProduct | undefined) => void;}) {
- 
-    const EMPTY_PRODUCT: IProduct = { name: "", price: 0, weightInGrams: 0 };
+export default function ProductForm({
+  setProducts,
+  productToUpdate,
+  setProductToUpdate,
+}: {
+  setProducts: (product: IProduct[]) => void;
+  productToUpdate: IProduct | undefined;
+  setProductToUpdate: (product: IProduct | undefined) => void;
+}) {
+  const EMPTY_PRODUCT: IProduct = { name: "", price: 0, weightInGrams: 0 };
   const productToEdit = productToUpdate ? productToUpdate : EMPTY_PRODUCT;
-
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -32,6 +37,7 @@ export default function ProductForm({ productToUpdate, setProductToUpdate }:
     alert(`Produkt ${addedOrEdited}: ${newProduct.name}`);
 
     setProductToUpdate(EMPTY_PRODUCT);
+    setProducts(await getProducts());
   }
 
   return (
@@ -49,12 +55,18 @@ export default function ProductForm({ productToUpdate, setProductToUpdate }:
         <label>
           Vægt:
           <input type="number" name="weightInGrams" value={productToEdit.weightInGrams} onChange={handleChange} />
-        </label> 
+        </label>
         <button type="submit" onClick={handleSubmit}>
-          {/* {isEditing ? "Rediger produkt" : "Opret produkt"} */}
           {productToUpdate && productToUpdate.id ? "Rediger produkt" : "Opret produkt"}
         </button>
-        <button onClick={(e) => {e.preventDefault(); setProductToUpdate(EMPTY_PRODUCT) }}>Annullér</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setProductToUpdate(EMPTY_PRODUCT);
+          }}
+        >
+          Annullér
+        </button>
       </form>
     </div>
   );
