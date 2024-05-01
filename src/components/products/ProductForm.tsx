@@ -18,7 +18,7 @@ export default function ProductForm({
     setProductToUpdate({ ...productToEdit, [name]: value });
   }
 
-  async function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLButtonElement>) {
     event.preventDefault();
     console.log("Product to update: ", productToUpdate);
 

@@ -10,6 +10,10 @@ export async function getProduct(id: string): Promise<IProduct> {
   return await fetch(BASE_URL+`products/${id}`).then((response) => response.json());
 }
 
+export async function searchProduct(searchString: string): Promise<IProduct[]> {
+  return await fetch(BASE_URL+`products/search?searchFor=${searchString}`).then((response) => response.json());
+}
+
 // make a function that can both handle a POST and PUT request to the API to add a new product or edit an existing product and handle errors 
 export async function addProduct(newProduct: IProduct): Promise<IProduct> {
   const method = newProduct.id ? "PUT" : "POST";
